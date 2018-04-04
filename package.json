@@ -1,0 +1,14 @@
+{
+  "name": "functs",
+  "version": "1.0.0",
+  "description": "Functional stdlib for TS",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Reid Evans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reidev275/functs/issues"
+  },
+  "homepage": "https://github.com/reidev275/functs#readme"
+}
