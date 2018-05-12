@@ -39,8 +39,22 @@ export const getOrdMonoid = <A>(): Monoid<Ord<A>> => ({
   ...getOrdSemigroup()
 });
 
+export const invert = <A>(ord: Ord<A>): Ord<A> => ({
+  compare: (x: A, y: A) => {
+    const ordering = ord.compare(x, y);
+    if (ordering === Ordering.GT) return Ordering.LT;
+    if (ordering === Ordering.LT) return Ordering.GT;
+    return ordering;
+  }
+});
+
 export const unsafeCompare = (x: any, y: any): Ordering =>
   x < y ? Ordering.LT : x > y ? Ordering.GT : Ordering.EQ;
+
+export const ascending: Ord<number> = {
+  compare: (x: number, y: number): Ordering =>
+    x < y ? Ordering.LT : x > y ? Ordering.GT : Ordering.EQ
+};
 
 export const sortWith = <A, B>(O: Ord<A>, f: Fn<B, A>, xs: B[]): B[] =>
   xs.sort(contramap(f, O).compare);
