@@ -11,3 +11,7 @@ export const compose = <A, B, C>(f: Fn<A, B>, g: Fn<B, C>): Fn<A, C> => a =>
   g(f(a));
 
 export const flip = <A, B, C>(f: Fn3<A, B, C>) => (b: B, a: A): C => f(a, b);
+
+export type Immutable<T> = {
+  readonly [P in keyof T]-?: T[P];
+}
